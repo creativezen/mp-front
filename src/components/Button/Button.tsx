@@ -25,12 +25,12 @@ const Button = styled(
   )
 )`
   user-select: none;
-  cursor: ${(p) => (p.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   border-radius: 5px;
   display: inline-flex;
   align-items: center;
-  width: ${(p) => (p.block ? '100%' : 'fit-content')};
-  justify-content: ${(p) => (p.block ? 'center' : 'initial')};
+  width: ${(props) => (props.block ? '100%' : 'fit-content')};
+  justify-content: ${(props) => (props.block ? 'center' : 'initial')};
   font-size: 14px;
   font-weight: 500;
   padding: 10px 22px;

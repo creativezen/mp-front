@@ -21,9 +21,8 @@ import {
   BtnOrders,
   BtnFavorites,
   BtnNotifications,
-  BtnCart,
+  BtnCart
 } from './styled'
-
 
 const Header: React.FC = () => {
   // const location = useLocation()
@@ -31,12 +30,14 @@ const Header: React.FC = () => {
   const isLogged = useAppSelector(selectIsLogged)
   const favorites = useAppSelector(selectFavorites)
 
-  const [ searchInput, setSearchInput ] = useState<string>('')
+  const [searchInput, setSearchInput] = useState<string>('')
 
-  const changeSearchInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value)
-  }, [])
-
+  const changeSearchInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchInput(e.target.value)
+    },
+    []
+  )
 
   // if (
   //   location.pathname.includes(paths.login)
@@ -44,7 +45,6 @@ const Header: React.FC = () => {
   //   || location.pathname.includes(paths.requestPasswordRecovery)
   //   || location.pathname.includes(paths.confirmPasswordRecovery)
   // ) return null
-
 
   return (
     <Wrapper>
@@ -55,7 +55,9 @@ const Header: React.FC = () => {
 
         <Button>
           <Burger>
-            <div /><div /><div />
+            <div />
+            <div />
+            <div />
           </Burger>
 
           <span>Каталог</span>
@@ -67,24 +69,23 @@ const Header: React.FC = () => {
           value={searchInput}
           onChange={changeSearchInput}
           isGhost
-          placeholder='Поиск товаров'
+          placeholder="Поиск товаров"
         />
 
         <BtnSearch />
       </SearchWrapper>
 
       <RightSide>
-        {isLogged ? <>
-          <BtnOrders />
-          <BtnFavorites count={favorites.length} />
-          <BtnNotifications />
-          <BtnCart />
-          <UserDropdownMenu />
-        </> : (
-          <Link to={paths.login}>
-            &nbsp;&nbsp;&nbsp;
-            Войти
-          </Link>
+        {isLogged ? (
+          <>
+            <BtnOrders />
+            <BtnFavorites count={favorites.length} />
+            <BtnNotifications />
+            <BtnCart />
+            <UserDropdownMenu />
+          </>
+        ) : (
+          <Link to={paths.login}>&nbsp;&nbsp;&nbsp; Войти</Link>
         )}
       </RightSide>
     </Wrapper>
